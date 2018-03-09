@@ -26,8 +26,8 @@ require_relative 'entry'
   def remove_entry(name, phone_number, email)
     # Implementation goes here
     entries.each do |entry|
-       if name == entry.name
-        entries.clear
+       if name == entry.name && phone_number == entry.phone_number && email == entry.email
+        entries.delete(entry)
       end
     end        
   end
