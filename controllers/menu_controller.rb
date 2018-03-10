@@ -11,6 +11,7 @@
    def main_menu
      # #2
      puts "Main Menu - #{address_book.entries.count} entries"
+     puts "0 - View Entry Number n"
      puts "1 - View all entries"
      puts "2 - Create an entry"
      puts "3 - Search for an entry"
@@ -23,6 +24,10 @@
 
      # #7
      case selection
+       when 0
+        system "clear"
+        view_entry
+        main_menu
        when 1
          system "clear"
          view_all_entries
@@ -50,7 +55,28 @@
          main_menu
      end
    end
- 
+   
+   def view_entry
+     system "clear"
+     puts "AddressBloc Entry Lookup"
+     # #12
+     print "Enter entry number: "
+     number_to_lookup = gets.chomp
+     number_to_lookup = number_to_lookup.to_i 
+
+        puts "Your selection: #{number_to_lookup}"
+     address_book.entries.each_with_index do |entry, index|
+       if number_to_lookup == index
+        puts entry.to_s
+        system "clear"
+       else 
+        system "clear"
+        puts "Sorry, #{number_to_lookup} is not a valid input"
+        main_menu
+       end
+     end
+   end
+
    # #10
    def view_all_entries
      # #14
