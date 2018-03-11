@@ -59,22 +59,18 @@
    def view_entry
      system "clear"
      puts "AddressBloc Entry Lookup"
-     # #12
      print "Enter entry number: "
-     number_to_lookup = gets.chomp
-     number_to_lookup = number_to_lookup.to_i 
+     number_to_lookup = gets.chomp.to_i
+     number_to_lookup = number_to_lookup - 1 #assumes user starts to count at 1 and converts to index value
+     puts "Your selection: #{number_to_lookup + 1}"
 
-        puts "Your selection: #{number_to_lookup}"
-     address_book.entries.each_with_index do |entry, index|
-       if number_to_lookup == index
-        puts entry.to_s
-        system "clear"
-       else 
-        system "clear"
-        puts "Sorry, #{number_to_lookup} is not a valid input"
-        main_menu
-       end
-     end
+     if number_to_lookup < address_book.entries.count && number_to_lookup >= 0
+      puts address_book.entries[number_to_lookup]
+      system "clear"
+     else    
+      puts "Sorry, #{number_to_lookup + 1} is not a valid input"
+      view_entry
+     end           
    end
 
    # #10
