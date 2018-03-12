@@ -34,8 +34,12 @@ require "csv"
        add_entry(row_hash["name"], row_hash["phone_number"], row_hash["email"])
      end     
    end
+   
+   def delete_all
+    @entries = []
+   end
 
- def binary_search(name)
+   def binary_search(name)
      # #1
      lower = 0
      upper = entries.length - 1

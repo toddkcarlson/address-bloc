@@ -131,5 +131,18 @@
        entry = book.binary_search("Billy")
        expect(entry).to be_nil
      end     
-   end       
+   end 
+
+   describe "#delete_all" do
+     it "deletes all entries" do
+       book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+       book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+       book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+       book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')                     
+
+      book.delete_all
+      expect(book.entries.size).to eq 0
+    end
+  end
+
 end
